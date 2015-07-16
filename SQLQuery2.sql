@@ -1,10 +1,12 @@
-/*Select*/
+/* TODO: Delete, Second Highest, Union Select Into */
 select * from Employee;
 
+/*TODO: brackets are not required*/
 select Distinct(FirstName) from Employee;
 
 select Distinct(Designation) from Employee;
 
+/* TODO: Put space after comma*/
 select EmployeeId,FirstName,LastName From Employee
 where Salary < 20000;
 
@@ -38,8 +40,7 @@ where Salary BETWEEN 10000 AND 55000;
 
 select Salary As SalaryofEmployee From Employee;
 
-SELECT Employee.FirstName, Orders.OrderId
-FROM Employee
+Select IntoFROM Employee
 INNER JOIN Orders
 ON Employee.EmployeeId=Orders.EmployeeId
 ORDER BY Employee.FirstName;
