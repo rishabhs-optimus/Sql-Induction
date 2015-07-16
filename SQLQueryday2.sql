@@ -34,6 +34,8 @@ SELECT LEN(FirstName) FROM Employee;
 
 
 /*use of Null and Not Null*/
+/*TODO: Table name should be meaningful and Pascal Case to be used*/
+/*TODO: Column name should be LastName FirstName etc*/
 select * from rishabhss;
 SELECT Last,First,Address FROM rishabhss
 WHERE Address IS NOT NULL;
@@ -41,6 +43,7 @@ SELECT Last,First,Address FROM rishabhss
 WHERE Address IS NULL;
 
 /*view*/
+/*Variable names should be meaningful*/
 create View view2 as
 select FirstName,LastName from Employee
 where salary > 30000;
@@ -63,18 +66,19 @@ WHERE
 SELECT FirstName,LastName,Salary CONVERT(VARCHAR(10),GETDATE(),110) from Employee;
 
 /*getdate*/
-SELECT *  GETDATE() AS CurrentDateTime from Employee;
+SELECT * GETDATE() AS CurrentDateTime from Employee;
 
 /*Cast*/
 select CAST(EmployeeId as decimal(10,3)) from Employee;
 
 /*case statements*/
+/* Indentation should be proper*/
 SELECT CASE
-         WHEN Salary > 15000 and age< 35 THEN
-          'YES'
-            ELSE
-          'NO'
-       END as Type
+        WHEN Salary > 15000 and age< 35 THEN
+        'YES'
+        ELSE
+        'NO'
+        END as Type
 FROM Employee;
 
 /*cube*/
@@ -83,7 +87,6 @@ FROM Employee
 GROUP BY FirstName, LastName WITH CUBE;
 
 /*rollup*/
-
 SELECT FirstName,LastName, SUM(Salary) AS QtySum
 FROM Employee
 GROUP BY FirstName, LastName WITH Rollup;
@@ -94,6 +97,7 @@ which makes it easier for searching
 and hence searching is fast*/
 
 /*group by commands*/
+/* Indentation should be proper*/
 create table rishabh(
   empid int,
   depname varchar(20),
@@ -109,6 +113,7 @@ select depname, depid, count(empid)
 from rishabh
 group by depname,depid
 order by depname;
+
 /*intersect*/
 select * from Employee
 Intersect
