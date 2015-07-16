@@ -30,7 +30,7 @@ declare
 
 declare 
 cemployeesalary cursor 
-for select Basicsalary,HR,DA from employees where empid>2 ;
+for select Basicsalary,HR,DA from employees where empid>4 ;
 
 open cemployeesalary;
 
@@ -42,9 +42,9 @@ update employees
 set Grosssalary=(Basicsalary+HR+DA)*12;
 end;
 
-/*function*/
+// a function for checking leap year//
 DECLARE @Num INT;
-	CREATE FUNCTION Leap(@Num INT)
+	CREATE FUNCTION Leapyear(@Num INT)
 	RETURNS NVARCHAR(MAX)
 	AS
 	BEGIN
@@ -60,9 +60,9 @@ DECLARE @Num INT;
 	RETURN @Temp;
 	END;
 	GO
-SELECT dbo.Leap(2000) as Result;
+SELECT dbo.Leapyear(2000) as Result;
 
-/*procedure*/
+//procedure made for displaying details//
 declare @variable int;
 	create procedure getnumber(@variable int)
 		As
@@ -71,3 +71,22 @@ declare @variable int;
 		where empid=@variable;
 	end;
 execute getnumber 1;
+
+CREATE PROCEDURE DivideByZero(@FirstNumber INT,@SecondNumber INT)
+ AS
+ BEGIN
+BEGIN TRY
+SELECT @FirstNumber%@SecondNumber
+END TRY
+BEGIN CATCH
+SELECT
+		ERROR_NUMBER() AS ErrorNumber
+		,ERROR_SEVERITY() AS ErrorSeverity
+		,ERROR_STATE() AS ErrorState
+		,ERROR_PROCEDURE() AS ErrorProcedure
+		,ERROR_LINE() AS ErrorLine
+		,ERROR_MESSAGE() AS ErrorMessage;
+END CATCH;
+END
+GO
+EXECUTE DivideByZero 100,0;//parameters paased to the function//
